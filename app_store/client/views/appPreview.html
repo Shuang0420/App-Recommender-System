@@ -1,0 +1,26 @@
+<template name="appPreview">
+  <!-- each app preview will be wrapped in an <li> element, as the topChart template will insert each app into a <ul>-->
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-xs-1 appRank text-muted">
+                {{rank}}
+            </div>
+            <!-- set the img src to the iconUrl property that we scraped-->
+            <div class="col-xs-3 appIconPreview">
+                <img height=50 width=50 src="{{iconUrl}}"/>
+            </div>
+            <div class="col-xs-6 nameColumn">
+                <a href="{{pathFor 'appPage'}}">{{name}}</a><br/>
+                <div style="display:flex">
+                  <!-- the stars-rating package with this template. pass apps avgRating property to the templates "rating" property
+                        so that it can color the correct # of stars-->
+                    {{> starsRating rating=avgRating class='mystar' size='sm'}}
+                </div>
+            </div>
+            <div class="col-xs-2 text-right getApp">
+              <!-- pathFor is a built in helper that takes the name of the route and returns a correct path.-->
+                <a href="{{pathFor 'appPage'}}" class="btn btn-primary">+ Get</a>
+            </div>
+        </div>
+    </li>
+</template>

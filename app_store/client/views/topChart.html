@@ -1,0 +1,20 @@
+<!-- define a template named topChart -->
+<template name="topChart">
+  <!-- utilize the bootstrap navbar class to give us the App	Store	top	bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="text-center" id="navTitle">
+                <strong>Top Charts</strong>
+            </div>
+        </div>
+    </nav>
+    <ul class="list-group">
+      <!-- use the built in SpaceBars {{#each}}	to iterate through the “apps” property that	we set inside	our	route’s	”data”	function.
+      Inside the	{{#each}}{{/each}} block the data context	changes	from “apps”	to be	the	app	in scope for each	iteration.-->
+        {{#each apps}}
+        <!-- call	the	“appPreview” template. Since it	is inside	the	{{#each}}	block	it will	be passed	the	data for each	individual app as	its
+        context	as we	iterate	through	our	parent data	context. -->
+            {{> appPreview this}}
+        {{/each}}
+    </ul>
+</template>
