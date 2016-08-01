@@ -6,6 +6,7 @@
 - scrapy
 - scrapy-splash
 - scrapy-redis
+- meteor
 
 
 ## Crawler Module
@@ -14,10 +15,10 @@ First make sure docker and redis is running.
 
 <pre>redis-server</pre>
 
-### master
+### Master
 <pre>python runSpider.py -master 1</pre>
 
-### slave
+### Slave
 Please first modify redis host ip address in settings.py.
 <pre>python runSpider.py</pre>
 
