@@ -1,6 +1,7 @@
 import operator
 from dataservice import DataService
 import math
+import collections
 
 class Helper(object):
     @classmethod
@@ -21,19 +22,16 @@ def calculate_top_5(app, user_download_history):
     cosine_similarity between an App and user's history
     '''
     #create a dict to store each other app and its similarity to this app
-    app_similarity = {}#{app_id: similarity}
+    app_similarity = collections.defaultdict(float) #{app_id: similarity}
     for apps in user_download_history:
         #calculate the similarity
         similarity = Helper.cosine_similarity([app], apps)
         # accumluate similarity
         for other_app in apps:
-            if app_similarity.has_key(other_app):
-                app_similarity[other_app] = app_similarity[other_app] + similarity
-            else:
-                app_similarity[other_app] = similarity
+            app_similarity[other_app] += similarity
 
     # There could be app without related apps (not in any download history)
-    if not app_similarity.has_key(app):
+    if not app in app_similarity:
         return
 
     #sort app_similarity dict by value and get the top 5 as recommendation
